@@ -5,12 +5,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import app.dtos.InputDto;
 import app.dtos.OutputDto;
+import app.model.CalculadoraModel;
+import app.repositories.CalculadoraRepository;
 import app.services.CalculadoraServices;
 
 
@@ -19,6 +23,9 @@ public class CalculadoraControllerTest {
 
 	@Spy
 	InputDto inputDto;
+	
+	@Mock
+	CalculadoraRepository calculadoraRepository;
 	
 	@InjectMocks
 	CalculadoraServices calculadoraServices;
@@ -63,4 +70,23 @@ public class CalculadoraControllerTest {
 		OutputDto outputDto = calculadoraServices.dividir(inputDto);
 		Assert.assertEquals(0.5, outputDto.getZ(), 0.001);
 	}
+
+	@Test
+	public void deveVerificarMemoria() {
+		inputDto.setX(25.0);
+		inputDto.setY(5.0);
+		
+		CalculadoraModel calculadoraModel = CalculadoraModel.builder()
+															.x(25.0)
+															.y(5.0)
+															.z(5.0)
+															.operacao("divisao")
+															.build();
+		
+		Mockito.when(calculadoraRepository.save(Mockito.any(CalculadoraModel.class))).thenReturn(calculadoraModel);
+		calculadoraServices.dividir(inputDto);
+		
+		Mockito.verify(calculadoraRepository).save(calculadoraModel);
+	}
+	
 }
