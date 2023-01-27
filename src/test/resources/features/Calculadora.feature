@@ -7,7 +7,7 @@ Funcionalidade: Teste
     Dado parametrizar <X> e <Y>
     Quando realizar a requisicao de "<OPERACAO>"
     Entao validar status code 200
-    E validar <Z>
+    E validar o valor de retorno <Z>
     E validar a memoria <ID> <X> <Y> <Z> "<OPERACAO>"
 
 	Exemplos:

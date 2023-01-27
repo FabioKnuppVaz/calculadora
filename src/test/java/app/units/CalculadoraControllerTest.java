@@ -80,7 +80,7 @@ public class CalculadoraControllerTest {
 															.x(25.0)
 															.y(5.0)
 															.z(5.0)
-															.operacao("divisao")
+															.operacao("dividir")
 															.build();
 		
 		Mockito.when(calculadoraRepository.save(Mockito.any(CalculadoraModel.class))).thenReturn(calculadoraModel);

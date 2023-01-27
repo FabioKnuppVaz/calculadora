@@ -1,9 +1,6 @@
 package app.integration.steps;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +67,7 @@ public class CalculadoraSteps {
 				.statusCode(statusCode);
 	}
 	
-	@E("validar {double}")
+	@E("validar o valor de retorno {double}")
 	public void validar(Double z) {
 		OutputDto outputDto = response
 								.then()
