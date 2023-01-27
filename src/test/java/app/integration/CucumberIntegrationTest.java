@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		features = "classpath:features", 
 		extraGlue = "classpath:steps",
 		snippets = SnippetType.CAMELCASE,
-		tags = "@Somar"
+		tags = "@CALCULAR"
 	)
 public class CucumberIntegrationTest {
 
