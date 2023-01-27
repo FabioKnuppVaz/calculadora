@@ -41,7 +41,7 @@ public class CalculadoraController {
 		return calculadoraServices.dividir(inputDto);
 	}
 	
-	@GetMapping
+	@GetMapping("memoria")
 	public List<CalculadoraModel> memoria() {
 		return calculadoraServices.memoria();
 	}

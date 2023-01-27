@@ -22,7 +22,7 @@ public class CalculadoraServices {
 															.x(inputDto.getX())
 															.y(inputDto.getY())
 															.z(inputDto.getX() + inputDto.getY())
-															.operacao("soma")
+															.operacao("somar")
 															.build();
 
 		calculadoraRepository.save(calculadoraModel);
@@ -37,7 +37,7 @@ public class CalculadoraServices {
 															.x(inputDto.getX())
 															.y(inputDto.getY())
 															.z(inputDto.getX() - inputDto.getY())
-															.operacao("subtracao")
+															.operacao("subtrair")
 															.build();
 
 		calculadoraRepository.save(calculadoraModel);
@@ -52,7 +52,7 @@ public class CalculadoraServices {
 															.x(inputDto.getX())
 															.y(inputDto.getY())
 															.z(inputDto.getX() * inputDto.getY())
-															.operacao("multiplicacao")
+															.operacao("multiplicar")
 															.build();
 
 		calculadoraRepository.save(calculadoraModel);
@@ -67,7 +67,7 @@ public class CalculadoraServices {
 															.x(inputDto.getX())
 															.y(inputDto.getY())
 															.z(inputDto.getX() / inputDto.getY())
-															.operacao("divisao")
+															.operacao("dividir")
 															.build();
 
 		calculadoraRepository.save(calculadoraModel);

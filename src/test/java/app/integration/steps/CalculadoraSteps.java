@@ -1,10 +1,18 @@
 package app.integration.steps;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.server.LocalServerPort;
 
 import app.dtos.InputDto;
 import app.dtos.OutputDto;
+import app.model.CalculadoraModel;
+import app.repositories.CalculadoraRepository;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
@@ -17,6 +25,9 @@ import io.restassured.specification.RequestSpecification;
 
 public class CalculadoraSteps {
 
+	@Autowired
+	CalculadoraRepository calculadoraRepository;
+	
 	InputDto inputDto;
 	RequestSpecification requestSpecification;
 	Response response;
@@ -68,6 +79,22 @@ public class CalculadoraSteps {
 									.as(OutputDto.class);
 		
 		Assert.assertEquals(z, outputDto.getZ(), 0.001);
+	}
+	
+	@E("validar a memoria {int} {double} {double} {double} {string}")
+	public void validarAMemoria(Integer id, Double x, Double y, Double z, String operacao) {
+		List<CalculadoraModel> calculadorasModel = calculadoraRepository.findAll();
+		
+		CalculadoraModel model = calculadorasModel
+			.stream()
+				.filter(calcladoraModel -> calcladoraModel.getId() == id)
+				.findFirst()
+				.get();
+		
+		Assert.assertEquals(x, model.getX(), 0.001);
+		Assert.assertEquals(y, model.getY(), 0.001);
+		Assert.assertEquals(z, model.getZ(), 0.001);
+		Assert.assertEquals(operacao, model.getOperacao());
 	}
 
 }
