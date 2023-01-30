@@ -3,6 +3,7 @@ package app.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,28 +23,33 @@ public class CalculadoraController {
 	CalculadoraServices calculadoraServices;
 	
 	@PostMapping("somar")
-	public OutputDto somar(@RequestBody InputDto inputDto) {
-		return calculadoraServices.somar(inputDto);
+	public ResponseEntity<OutputDto> somar(@RequestBody InputDto inputDto) {
+		OutputDto outputDto = calculadoraServices.somar(inputDto);
+		return ResponseEntity.ok(outputDto);
 	}
 	
 	@PostMapping("subtrair")
-	public OutputDto subtrair(@RequestBody InputDto inputDto) {
-		return calculadoraServices.subtrair(inputDto);
+	public ResponseEntity<OutputDto> subtrair(@RequestBody InputDto inputDto) {
+		OutputDto outputDto = calculadoraServices.subtrair(inputDto);
+		return ResponseEntity.ok(outputDto);
 	}
 	
 	@PostMapping("multiplicar")
-	public OutputDto multiplicar(@RequestBody InputDto inputDto) {
-		return calculadoraServices.multiplicar(inputDto);
+	public ResponseEntity<OutputDto> multiplicar(@RequestBody InputDto inputDto) {
+		OutputDto outputDto = calculadoraServices.multiplicar(inputDto);
+		return ResponseEntity.ok(outputDto);
 	}
 	
 	@PostMapping("dividir")
-	public OutputDto dividir(@RequestBody InputDto inputDto) {
-		return calculadoraServices.dividir(inputDto);
+	public ResponseEntity<OutputDto> dividir(@RequestBody InputDto inputDto) {
+		OutputDto outputDto = calculadoraServices.dividir(inputDto);
+		return ResponseEntity.ok(outputDto);
 	}
 	
 	@GetMapping("memoria")
-	public List<CalculadoraModel> memoria() {
-		return calculadoraServices.memoria();
+	public ResponseEntity<List<CalculadoraModel>> memoria() {
+		List<CalculadoraModel> outputDto = calculadoraServices.memoria();
+		return ResponseEntity.ok(outputDto);
 	}
 	
 }

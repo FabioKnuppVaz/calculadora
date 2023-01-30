@@ -61,7 +61,7 @@ public class CalculadoraServices {
 		return outputDto;
 	}
 	
-	public OutputDto dividir(InputDto inputDto) {
+	public OutputDto dividir(InputDto inputDto) {		
 		OutputDto outputDto = new OutputDto();
 		CalculadoraModel calculadoraModel = CalculadoraModel.builder()
 															.x(inputDto.getX())
